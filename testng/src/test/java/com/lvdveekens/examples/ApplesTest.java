@@ -9,7 +9,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import static org.testng.AssertJUnit.assertEquals;
 
 @CucumberOptions(
-        features = "classpath:features/Apples.feature",
+        features = {"classpath:com/lvdveekens/examples/Apples.feature", "classpath:features/Apples.feature"},
         glue = "classpath:com.lvdveekens.examples",
         format = "pretty",
         strict = true

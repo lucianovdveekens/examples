@@ -1,11 +1,16 @@
-Feature: Apples
+Feature: Giving away apples
 
-  Scenario: I have two apples and give one away
+  Scenario: I have two apples and I give one away
     Given I have 2 apples
     When I give 1 away
     Then I have 1 left
 
-  Scenario: I have ten apples and give three away
-    Given I have 10 apples
-    When I give 3 away
-    Then I have 7 left
+  Scenario Outline: I have <a> apples and I give <b> away
+    Given I have <a> apples
+    When I give <b> away
+    Then I have <c> left
+
+    Examples:
+      | a  | b | c |
+      | 10 | 8 | 2 |
+      | 2  | 1 | 1 |
