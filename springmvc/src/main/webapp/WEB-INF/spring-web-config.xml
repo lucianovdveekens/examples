@@ -10,14 +10,19 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd ">
 
-    <context:component-scan base-package="com.lvdveekens.springmvc.controllers"/>
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    <property name="prefix" value="/WEB-INF/pages/"/>
+    <property name="suffix" value=".jsp"/>
+  </bean>
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/pages/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
+  <context:component-scan base-package="com.lvdveekens.springmvc.controllers"/>
 
-    <mvc:annotation-driven/>
+  <bean class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration" id="swagger2Config">
+  </bean>
+
+  <mvc:annotation-driven/>
+  <mvc:resources location="classpath:/META-INF/resources/webjars/" mapping="/webjars/**"/>
+  <mvc:resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"/>
 
 </beans>

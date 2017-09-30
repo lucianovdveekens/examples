@@ -1,8 +1,13 @@
 package com.lvdveekens.springmvc.controllers;
 
+import com.lvdveekens.springmvc.pojo.Person;
 import com.lvdveekens.springmvc.services.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,4 +30,8 @@ public class HelloWorldController {
         return model;
     }
 
+    @RequestMapping(value = "/person", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<?> createPerson(@RequestBody Person person) {
+        return new ResponseEntity<>("Created: " + person, HttpStatus.CREATED);
+    }
 }
