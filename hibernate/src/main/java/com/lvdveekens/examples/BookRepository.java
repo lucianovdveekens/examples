@@ -6,7 +6,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-public class BookDao {
+public class BookRepository {
 
     private SessionFactory sessionFactory;
 
@@ -43,22 +43,22 @@ public class BookDao {
     }
 
     public static void main(String[] args) {
-        BookDao bookDao = new BookDao();
-        bookDao.setup();
+        BookRepository bookRepository = new BookRepository();
+        bookRepository.setup();
 
-//        Book book = new Book();
-//        book.setTitle("Clean Code");
-//        book.setAuthor("Robert Martin");
-//        book.setPrice(39.99f);
-//
-//        bookDao.insert(book);
+        Book book = new Book();
+        book.setTitle("Clean Code");
+        book.setAuthor("Robert Martin");
+        book.setPrice(39.99f);
 
-        Book cleanCode = bookDao.findById(2);
-        System.out.println("Title : " + cleanCode.getTitle());
-        System.out.println("Author: " + cleanCode.getAuthor());
-        System.out.println("Price : " + cleanCode.getPrice());
+        bookRepository.insert(book);
 
-        bookDao.exit();
+//        Book cleanCode = bookRepository.findById(2);
+//        System.out.println("Title : " + cleanCode.getTitle());
+//        System.out.println("Author: " + cleanCode.getAuthor());
+//        System.out.println("Price : " + cleanCode.getPrice());
+
+        bookRepository.exit();
     }
 
 }
